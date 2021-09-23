@@ -1,0 +1,13 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  padding: 5em 0em;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
