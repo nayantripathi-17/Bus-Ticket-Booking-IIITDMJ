@@ -1,0 +1,15 @@
+{
+  "name": "bus_ticket_booking",
+  "version": "1.0.0",
+  "description": "This app is intended for booking of bus tickets for employees and students of IIITDM Jabalpur, for buses run/contracted by the institute.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nayan Tripathi, Akhil Babu & Nehi Jain",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jshint": "^2.13.1"
+  }
+}
