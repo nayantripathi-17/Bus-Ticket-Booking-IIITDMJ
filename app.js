@@ -23,6 +23,9 @@ app.get(`/create_user`, (req, res) => {
 app.get(`/create_driver`, (req, res) => {
     res.sendFile(path.join(__dirname, `create_acc_driver.html`));
 });
+app.get(`/booking`,(req,res)=>{
+    res.sendFile(path.join(__dirname,`booking.html`));
+});
 app.post(`/login_check`, (req, res) => {
     if (req.body.userType == "user") {
 
