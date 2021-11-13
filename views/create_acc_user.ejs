@@ -1,0 +1,66 @@
+<%- include(`partials/header`); -%>
+<head>
+    <title>Create User Account</title>
+    <!-- Custom styles for this template -->
+    <link href="login_style.css" rel="stylesheet">
+</head>
+<main class="form-signin container py-5">
+    <article class="row d-flex justify-content-center">
+        <div
+            class="card col-12 col-md-8 col-lg-5 col-xl-5 border border-2 pt-5 pb-0 ps-0 pe-0 h-100 rounded-3 align-items-start">
+            <form class="card-body pt-0 ps-4 p-5 ms-5" method="POST" action="/create_user_acc">
+                <a class="fas fa-bus display-5 pb-4 text-decoration-none text-black" href="/about"></a>
+                <div class="d-flex justify-content-between">
+                    <h1 class="fs-3 fw-normal">Create User Account</h1>
+                    <a class="ps-3 d-flex link link-primary text-decoration-none align-bottom" href="/login">Sign
+                        In</a>
+                </div>
+                <div class="form-floating form-check-inline ms-0 input-group-sm">
+                    <input type="text" class="form-control" id="floatingFname" placeholder="Jack" name="fname" required>
+                    <label for="floatingFname">First Name</label>
+                </div>
+                <div class="form-floating form-check-inline mt-2 ms-2 mb-2 me-0 input-group-sm">
+                   <input type="text" class="form-control" id="floatingLname" placeholder="Bauer" name="lname" required>
+                    <label for="floatingLname">Last Name</label>
+                </div>
+                <div class="form-floating mt-2 mb-2 input-group-sm">
+                    <input type="text" class="form-control" id="floatingUser" placeholder="JackBauer" name="username" required>
+                    <label for="floatingUser">Username</label>
+                </div>
+                <div class="form-floating mt-2 mb-2 input-group-sm">
+                    <input type="email" class="form-control" id="floatingEmail" placeholder="abc@example.com" name="email" required>
+                    <label for="floatingEmail">Email</label>
+                </div>
+                <div class="form-floating mt-2 input-group-sm">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password"name="password" required>
+                    <label for="floatingPassword">Password</label>
+                </div>
+                <div class="form-floating mt-2 mb-2 input-group-sm">
+                    <input type="text" class="form-control" id="floatingNum" placeholder="972XXXXXXX" name="contact" required>
+                    <label for="floatingNum">Contact Number</label>
+                </div>
+                <div class="form-floating mt-2 mb-2 input-group-sm">
+                    <input type="text" class="form-control" id="floatingId" placeholder="20BCSXXX" name="college_id" required>
+                    <label for="floatingId">College ID</label>
+                </div>
+                <div class="d-flex justify-content-evenly mt-3 mb-5">
+                    <label class="form-check-label" for="student"> Student <input class="form-check-input"
+                            type="radio" name="userType" id="student" value="0" required>
+                    </label>
+                    <label class="form-check-label" for="faculty"> Faculty <input class="form-check-input"
+                            type="radio" name="userType" id="faculty" value="1" required>
+                    </label>
+                </div>
+
+                <div class="d-flex justify-content-between" style="font-weight: 600;">
+                    <a class="d-flex w-100 link link-primary text-decoration-none align-bottom"
+                        href="/create_driver">Create Driver Account</a>
+                    <button class="w-25 btn btn-sm btn-primary" type="submit"
+                        style="font-weight: 500;">Next</button>
+                </div>
+            </form>
+        </div>
+    </article>
+</main>
+<%- include(`partials/footer`); -%>
+
