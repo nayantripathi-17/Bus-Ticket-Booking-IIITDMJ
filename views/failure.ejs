@@ -1,0 +1,14 @@
+<%- include(`partials/header`) -%>
+    <head>
+        <title>Failure</title>
+        <link href="login_style.css" rel="stylesheet">
+    </head>
+
+    <main class="container p-5 mt-4">
+        <article class="p-5 text-white bg-dark border rounded-3">
+            <h2 class="text-danger display-1 fw-normal">Failure</h2>
+            <p class="col-md-8 fs-4 ps-1">Data insertion failure!<br /><%= error %></p>
+            <a class="btn btn-outline-light btn-lg ms-1" href="<%= link %>">Go Back</a>
+        </article>
+    </main>
+<%- include(`partials/footer`) -%>

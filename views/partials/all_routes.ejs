@@ -1,0 +1,21 @@
+<%data.forEach((element)=>{%>
+<form action="/all_buses" method="POST">
+<div class="d-flex justify-content-between my-0">
+<div class="mt-1 mb-0">
+    <h1 class="fs-4 d-inline me-4"><%= element.route_no %></h1>
+    <h1 class="text-muted d-inline fs-4"><%= element.src %> - <%= element.des %></h1>
+    <%if(element.purpose){%>
+        <h5 class="d-inline col-3 ms-1 fs-4"> , <%= element.purpose %></h5>
+    <%}%>
+</div>
+<div class="ms-5">
+    <input type="hidden" value="<%= element.route_no %>" name="route_no">
+    <input type="hidden" value="<%= element.src %>" name="source">
+    <input type="hidden" value="<%= element.des %>" name="destination">
+    <button class="btn btn-md btn-outline-secondary" type="submit"><%= element.src %> - <%= element.des %></button>
+</div>
+</div>
+<hr class="my-2 p-0"/>
+</form>
+
+<%});%>
