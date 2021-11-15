@@ -1,0 +1,28 @@
+<div class="d-flex bg-transparent text-black justify-content-center">
+    <h1 class="display-5 mb-3 fw-light"><%= source %> - <%= destination %></h1>
+</div>
+<%data.forEach((element)=>{%>
+    <form action="/all_tickets" method="POST">
+    <div class="d-flex justify-content-around align-middle">
+    <div class="mb-0">
+        <h1 class="text-muted d-inline fs-4"><%= element.bus_no %></h1>
+        <input type="hidden" value="<%=element.bus_no%>" name="bus_no">
+        <input type="hidden" value="<%=element.route_no%>" name="route_no">
+        <input type="hidden" value="<%=source%>" name="source">
+        <input type="hidden" value="<%=destination%>" name="destination">
+    </div>
+    <div class="ms-5">
+        <h5 class="d-inline me-4">DOJ</h5>
+        <h5 class="d-inline  text-muted"><%=new Date(element.doj).toLocaleDateString('en-GB')%></h5>
+        <input type="hidden" value="<%=element.doj%>" name="doj">
+    </div>
+    <div class="ms-5">
+        <h5 class="d-inline me-2 ">Dept Time</h5>
+        <h5 class="d-inline  text-muted me-4"><%=new Date(new Date().toISOString().slice(0, 10) + ' ' +element.departure_time).toLocaleTimeString('en-US',{hour12:true,hour:'numeric',minute:'numeric'})%></h5>
+        <input type="hidden" value="<%=element.departure_time%>" name="departure_time">
+        <button class="btn btn-sm btn-outline-secondary" type="submit">View Tickets</button>
+    </div>
+    </div>
+    <hr/>
+    </form>
+<%});%>

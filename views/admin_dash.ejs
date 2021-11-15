@@ -1,0 +1,20 @@
+<%- include(`partials/header`); -%>
+<head>
+    <title>Admin Dashboard</title>
+    <!-- Custom styles for this template -->
+    <link href="booking_style.css" rel="stylesheet">
+</head>
+<%-include(`partials/navbar_logged_admin`,{user:userID}) -%>
+<div class="d-flex bg-transparent text-white justify-content-center">
+    <h1 class="display-5 mb-3 fw-light">Admin Dashboard</h1>
+</div>
+<div class="ms-auto me-auto mb-5 mt-0 ps-5 pe-5 pt-3 pb-3 container bg-light border rounded-3">
+    <% if(state==="routes"){%>
+    <%-include(`partials/all_routes`,{data:data})-%>
+    <%}else if(state===`bus`){%>
+    <%-include(`partials/all_bus`,{data:data,source:source,destination:destination,route_no:route_no})-%>
+    <%}else if(state===`ticket`){%>
+    <%-include(`partials/all_ticket`,{data:data,source:source,destination:destination,route_no:route_no,doj:doj,departure_time:departure_time,bus_no:bus_no,msg:msg})-%>
+    <%}%>
+</div>
+<%- include(`partials/footer`); -%>

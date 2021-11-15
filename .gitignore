@@ -1,4 +1,5 @@
 node_modules/
+Materials/
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json

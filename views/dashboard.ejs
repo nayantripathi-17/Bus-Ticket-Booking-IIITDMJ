@@ -1,0 +1,48 @@
+<%- include(`partials/header`); -%>
+<head>
+    <title>Dashboard</title>
+    <!-- Custom styles for this template -->
+    <link href="booking_style.css" rel="stylesheet">
+</head>
+    <%if(state===`navbar_logged`){%>
+    <%- include(`partials/navbar_logged`,{user:userID}) -%>
+    <%}else{%>
+    <%-include(`partials/navbar_logged_admin`,{user:userID}) -%>
+    <%}%>
+    <div class="d-flex bg-transparent text-white justify-content-center">
+        <h1 class="display-5 mb-3 fw-light">Booked Tickets</h1>
+    </div>
+    <div class="d-flex py-3 mx-5 bg-transparent text-danger justify-content-center">
+        <h1 class="display-5 fw-normal"><%= msg %></h1>
+    </div>
+    <% data.forEach((element) => { %>
+    <form method="POST">
+        <div class="m-5 mt-0 ps-5 pe-5 pt-2 pb-3 bg-light border rounded-3">
+        <div class="mb-3">
+            <h1 class=""><%= element.src %> - <%= element.des %></h1>
+            <h1 class="text-muted d-inline"><%=element.bus_no%></h1>
+            <input type="hidden" value="<%=element.bus_no%>" name="bus_no">
+            <input type="hidden" value="<%=element.src%>" name="source">
+            <input type="hidden" value="<%=element.des%>" name="destination">
+            <input type="hidden" value="<%=element.route_no%>" name="route_no">
+        </div>
+        <div class="mb-1 row">
+            <h5 class="d-inline me-4 col-3">Name</h5>
+            <h5 class="d-inline col-3 text-muted"><%= element.name %></h5>
+            <input type="hidden" value="<%=element.name%>" name="name">
+        </div>
+        <div class="mb-1 row">
+            <h5 class="d-inline me-4 col-3">Date Of Journey</h5>
+            <h5 class="d-inline col-3 text-muted"><%=new Date(element.doj).toLocaleDateString('en-GB')%></h5>
+            <input type="hidden" value="<%=element.doj%>" name="doj">
+        </div>
+        <div class="mb-1 row">
+            <h5 class="d-inline me-4 col-3">Departure Time</h5>
+            <h5 class="d-inline col-3 text-muted"><%=new Date(new Date().toISOString().slice(0, 10) + ' ' +element.departure_time).toLocaleTimeString('en-US',{hour12:true,hour:'numeric',minute:'numeric'})%></h5>
+            <input type="hidden" value="<%=element.departure_time%>" name="departure_time">
+        </div>
+    </div>
+    </form>
+    <% }); %>
+
+<%- include(`partials/footer`); -%>

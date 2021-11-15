@@ -1,0 +1,34 @@
+<div class="d-flex text-black justify-content-center">
+    <h1 class="display-6 mb-1 fw-light"><%= source %> - <%= destination %></h1>
+</div>
+<div class="d-flex text-muted justify-content-center">
+    <h1 class="display-6 mb-3 fw-light"><%= bus_no %></h1>
+</div>
+<div class="d-flex mb-5 justify-content-around">
+    <div>
+        <h1 class="fs-4 mb-3 me-2 fw-light d-inline">DOJ</h1>
+        <h1 class="fs-4 mb-3 fw-light text-muted d-inline"><%= new Date(doj).toLocaleDateString('en-GB') %></h1>
+    </div>
+    <div>
+        <h1 class="fs-4 mb-3 me-2 fw-light d-inline">Departure Time</h1>
+        <h1 class="fs-4 mb-3 fw-light text-muted d-inline"><%= new Date(new Date().toISOString().slice(0, 10) + ' ' +departure_time).toLocaleTimeString('en-US',{hour12:true,hour:'numeric',minute:'numeric'}) %></h1>
+    </div>
+</div>
+<div class="ms-5">
+    <h5 class="text-danger fs-3 text-center"><%=msg%></h5>
+</div>
+<%data.forEach((element)=>{%>
+    <form action="/all_tickets" method="POST">
+    <div class="d-flex justify-content-around align-middle">
+    <div class="mb-0">
+        <h5 class="d-inline me-4">Name</h5>
+        <h5 class="d-inline text-muted"><%= element.name %></h5>
+    </div>
+    <div class="ms-5">
+        <h5 class="d-inline me-4">Username</h5>
+        <h5 class="d-inline  text-muted"><%=element.username%></h5>
+    </div>
+    </div>
+    <hr/>
+    </form>
+<%});%>

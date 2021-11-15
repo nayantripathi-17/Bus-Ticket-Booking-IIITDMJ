@@ -1,0 +1,50 @@
+<%- include(`partials/header`); -%>
+<head>
+    <title>Available Buses</title>
+    <!-- Custom styles for this template -->
+    <link href="booking_style.css" rel="stylesheet">
+</head>
+    <%if(state ===`navbar_unlogged`){ %>
+    <%- include(`partials/navbar_unlogged`) -%>
+    <%}else if(state===`navbar_logged`){%>
+    <%- include(`partials/navbar_logged`,{user:userID}) -%>
+    <%}else{%>
+    <%-include(`partials/navbar_logged_admin`,{user:userID}) -%>
+    <%}%>
+    <div class="d-flex bg-transparent text-white justify-content-center">
+        <h1 class="display-5 mb-3 fw-light"><%= source %> - <%= destination %></h1>
+    </div>
+    <div class="d-flex py-3 mx-5 bg-transparent text-danger justify-content-center">
+        <h1 class="display-5 fw-normal"><%= msg %></h1>
+    </div>
+    <% data.forEach((element) => { %>
+    <form action="/checkout" method="POST">
+        <div class="m-5 mt-0 ps-5 pe-5 pt-2 pb-3 bg-light border rounded-3">
+        <div class="mb-3">
+            <h1 class="text-muted d-inline"><%=element.bus_no%></h1>
+            <input type="hidden" value="<%=element.bus_no%>" name="bus_no">
+            <input type="hidden" value="<%=source%>" name="source">
+            <input type="hidden" value="<%=destination%>" name="destination">
+            <input type="hidden" value="<%=element.route_no%>" name="route_no">
+        </div>
+        <div class="mb-1 row">
+            <h5 class="d-inline me-4 col-3">Date Of Journey</h5>
+            <h5 class="d-inline col-3 text-muted"><%=new Date(element.doj).toLocaleDateString('en-GB')%></h5>
+            <input type="hidden" value="<%=element.doj%>" name="doj">
+        </div>
+        <div class="mb-1 row">
+            <h5 class="d-inline me-4 col-3">Departure Time</h5>
+            <h5 class="d-inline col-3 text-muted"><%=new Date(new Date().toISOString().slice(0, 10) + ' ' +element.departure_time).toLocaleTimeString('en-US',{hour12:true,hour:'numeric',minute:'numeric'})%></h5>
+            <input type="hidden" value="<%=element.departure_time%>" name="departure_time">
+        </div>
+        <div class="mb-2 row">
+            <h5 class="d-inline me-4 col-3">Seats Available</h5>
+            <h5 class="d-inline col-3 text-muted"><%=element.seats_available%></h5>
+            <input type="hidden" value="<%=element.seats_available%>" name="seats_available">
+        </div>
+          <button class="btn btn-outline-primary" type="submit">Book Now</button>
+        </div>
+    </form>
+    <% }); %>
+
+<%- include(`partials/footer`); -%>
